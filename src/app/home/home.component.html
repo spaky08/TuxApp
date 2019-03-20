@@ -1,13 +1,13 @@
 <div class="row">
   <div class="col-lg-10 p-0">
-    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
-        <agm-marker [openInfoWindow]="'Inicio'"[iconUrl]="route.icon" [latitude]="route.initLocation.line[0][0]" [longitude]="route.initLocation.line[0][1]" *ngIf=" route && route.initLocation"></agm-marker>
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13" *ngIf="route">
+        <agm-marker    *ngIf=" route && route.initLocation" [iconUrl]="route.icon" [latitude]="route.initLocation.line[0][0]" [longitude]="route.initLocation.line[0][1]"></agm-marker>
 
         <agm-polyline *ngIf=" route && route.initLocation" [strokeColor]="route.initLocation.color">
             <agm-polyline-point   [latitude]="latlng[0]" [longitude]="latlng[1]" *ngFor="let latlng of route.initLocation.line">
             </agm-polyline-point>
         </agm-polyline>
-        <agm-marker [openInfoWindow]="'Inicio'"[iconUrl]="route.icon" [latitude]="route.stopLocation.line[0][0]" [longitude]="route.stopLocation.line[0][1]" *ngIf=" route && route.initLocation"></agm-marker>
+        <agm-marker  *ngIf=" route && route.stopLocation"  [iconUrl]="route.icon" [latitude]="route.stopLocation.line[0][0]" [longitude]="route.stopLocation.line[0][1]"></agm-marker>
 
         <agm-polyline *ngIf=" route && route.stopLocation" [strokeColor]="route.stopLocation.color">
             <agm-polyline-point  [latitude]="latlng[0]" [longitude]="latlng[1]" *ngFor="let latlng of route.stopLocation.line">
@@ -18,7 +18,7 @@
   <div class="col-lg-2 p-0">
     <mat-card>
         Buscar Rutas
-      <button mat-icon-button *ngIf="route && route.icon" (click)="clearRoute()" >
+      <button mat-icon-button *ngIf="route" (click)="clearRoute()" >
           <mat-icon>clear</mat-icon>
         </button>
       <mat-nav-list class="scroll-transport">
