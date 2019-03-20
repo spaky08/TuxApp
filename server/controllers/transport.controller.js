@@ -43,23 +43,23 @@ async function show(req,res){
 async function store(req,res){
     
     for(let i=1;i<127;i++){
-        await axios.get('https://api.tuxmapa.com.mx/v2/ruta/ruta3').then(r=>{
+        await axios.get('https://api.tuxmapa.com.mx/v2/ruta/ruta'+i).then(r=>{
         let route=r.data;
         let input={
             lineNumber:"Ruta "+i,
             icon:"/img/stations/xhdpi/bus.png",
             stopLocation:{
                 line:polyline.decode(route.puntos.lado_uno),
-                color:"#05820f"
+                color:"#ff5722"
             },
             initLocation:{
                 line:polyline.decode(route.puntos.lado_dos),
-                color:"#1a237e"
+                color:"#2962ff"
             }       
             
             
         };
-        let transport = Transport(input).save();
+        let transport =  Transport(input).save();
         
     },e=>{
         console.error("Error:"+i,e.message);

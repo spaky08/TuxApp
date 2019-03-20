@@ -4,6 +4,8 @@
 @import '~@angular/material/theming';
 @import '~dragula/dist/dragula.css';
 
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
 $custom-typography: mat-typography-config(
     $font-family: 'Exo'
 );
@@ -16,4 +18,8 @@ body {
   app-root * {
     font-family: 'Exo', sans-serif;
   }
+}
+
+agm-map {
+  height: 700px;
 }

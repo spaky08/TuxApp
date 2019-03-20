@@ -1,3 +1,38 @@
-<p>
-  home works! 
-</p>
+<div class="row">
+  <div class="col-lg-10 p-0">
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
+        <agm-marker [openInfoWindow]="'Inicio'"[iconUrl]="route.icon" [latitude]="route.initLocation.line[0][0]" [longitude]="route.initLocation.line[0][1]" *ngIf=" route && route.initLocation"></agm-marker>
+
+        <agm-polyline *ngIf=" route && route.initLocation" [strokeColor]="route.initLocation.color">
+            <agm-polyline-point   [latitude]="latlng[0]" [longitude]="latlng[1]" *ngFor="let latlng of route.initLocation.line">
+            </agm-polyline-point>
+        </agm-polyline>
+        <agm-marker [openInfoWindow]="'Inicio'"[iconUrl]="route.icon" [latitude]="route.stopLocation.line[0][0]" [longitude]="route.stopLocation.line[0][1]" *ngIf=" route && route.initLocation"></agm-marker>
+
+        <agm-polyline *ngIf=" route && route.stopLocation" [strokeColor]="route.stopLocation.color">
+            <agm-polyline-point  [latitude]="latlng[0]" [longitude]="latlng[1]" *ngFor="let latlng of route.stopLocation.line">
+            </agm-polyline-point>
+        </agm-polyline>
+    </agm-map>
+  </div>
+  <div class="col-lg-2 p-0">
+    <mat-card>
+        Buscar Rutas
+      <button mat-icon-button *ngIf="route && route.icon" (click)="clearRoute()" >
+          <mat-icon>clear</mat-icon>
+        </button>
+      <mat-nav-list class="scroll-transport">
+        <mat-list-item *ngFor="let link of transports" (click)="showRoute(link)">
+          
+          <button mat-icon-button >
+            <mat-icon>location_on</mat-icon>
+            {{link.lineNumber}}
+
+          </button>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-card>
+    
+    
+  </div>
+</div>

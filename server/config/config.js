@@ -37,7 +37,7 @@ const config = {
   jwtSecret: envVars.JWT_SECRET,
   frontend: 'angular',
   mongo: {
-    host: envVars.MONGO_HOST,
+    host: 'mongodb+srv://root:Spaky08mane@cluster0-gzuak.mongodb.net/test?retryWrites=true',
     port: envVars.MONGO_PORT
   }
 };
