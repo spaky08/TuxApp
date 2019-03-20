@@ -9,7 +9,7 @@ const envVarsSchema = Joi.object({
     .allow(['development', 'production', 'test', 'provision'])
     .default('development'),
   SERVER_PORT: Joi.number()
-    .default(4040),
+    .default(8080),
   MONGOOSE_DEBUG: Joi.boolean()
     .when('NODE_ENV', {
       is: Joi.string().equal('development'),
@@ -37,7 +37,7 @@ const config = {
   jwtSecret: envVars.JWT_SECRET,
   frontend: 'angular',
   mongo: {
-    host: 'mongodb+srv://root:Spaky08mane@cluster0-gzuak.mongodb.net/test?retryWrites=true',
+    host: envVars.MONGO_HOST,
     port: envVars.MONGO_PORT
   }
 };
